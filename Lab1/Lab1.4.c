@@ -31,7 +31,8 @@ int main(void){
 	if(fd2 < 0)
 		printf("open failed..!!");
 	
-	lseek(fd1,0,SEEK_SET);
+	if(lseek(fd1,0,SEEK_SET) != 0)
+		printf("LSEEK failed..\n"); 
 	while(read(fd1,buff3,1) > 0){
 			if(buff3[0] != 0)		
 				write(fd2,buff3,1);

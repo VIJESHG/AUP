@@ -1,26 +1,24 @@
 #include<stdio.h>
+#include<sys/types.h>
 #include<stdlib.h>
 #include<fcntl.h>
 #include<unistd.h>
+#include<errno.h>
 #include <sys/stat.h>
 int main(){
-	struct stat st;
-	stat("file.txt",&st);
-	int size =  st.st_size;
-	int ret;
-	char *buff;
-	char *str = "hello";
-	buff = (char*)malloc(sizeof(char)*128);
-	int fd1 = open("file.txt",O_RDWR);
-	if(fd1 == -1){
-		printf("open failed..!!!");
+	int fd = open("file",O_RDWR | O_APPEND);
+	if(fd == -1){
+		perror("open failed..!!");
+		return errno;
 	}
-	int cnt = 0;
-	while(cnt < size){	
-		ret = read(fd1,buff,10);
-		cnt += ret;
+	char a[10];
+	int r = read(fd,a,10);
+	if(r <= 0){
+		printf("read failed..");
 	}
-    write(fd1,str,5);
-	close(fd1);
+	int w = write(fd,"hello",5);
+	if(w != 5){
+		printf("write failed..");
+	}
 	return 0;
 }
