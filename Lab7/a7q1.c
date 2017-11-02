@@ -10,7 +10,7 @@ int main(int argc, char **argv){
 	fd = open("xyz", O_RDWR);
 	sprintf(buf, "%d", fd);
 	char *const parmList[] = {"./child",buf, NULL};
-	fcntl(fd, F_SETFD, 1);
+	fcntl(fd, F_SETFD, argv[2]);
 	pid = fork();
 	if(pid == 0) {
 		execvp("./child",parmList);
