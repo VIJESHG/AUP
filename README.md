@@ -45,6 +45,6 @@ leader and it does not have a controlling terminal.
    - A program to verify that a parent process can change the process `group ID` of one of
 its children before the child performs an `exec()`, but not afterward.
  
- 9. **Signals (Lab9)***
+ 9. **Signals (Lab9)**
    - Playing with different signal mechanisms.
  
