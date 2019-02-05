@@ -1,8 +1,6 @@
 # AUP
 Advanced Unix Programming Assignments
-Markup : * Bullet list
-              * Nested bullet
-                  * Sub-nested bullet etc
-          * Bullet list item 2
 
-
+-**Lab1**
+  -Implement `lseek` behaviour using system calls.
+-**Lab2**
